@@ -1,0 +1,32 @@
+﻿"Phrases"
+{
+	"Gain for play"
+	{
+        "#format"       "{1:i}"
+		"en"			"{fullred}[Shop] {white}You have gained {green}{1}{white} credits for playing on the server."
+	}
+	
+	"Humans win"
+	{
+        "#format"       "{1:i}"
+		"en"			"{fullred}[Shop] {blue}Humans {white}received {green}{1} {white}credits for all zombies eliminated!"
+	}
+	
+	"Solo win"
+	{
+        "#format"       "{1:s},{2:i}"
+		"en"			"{fullred}[Shop] {blue}{1} {white}received {green}{2} {white}credits for solo win!"
+	}
+	
+	"Kill"
+	{
+        "#format"       "{1:i}"
+		"en"			"{fullred}[Shop] {white}You received {green}{1} {white}credits for kill!"
+	}
+	
+	"Death"
+	{
+        "#format"       "{1:i}"
+		"en"			"{fullred}[Shop] {white}You lost {green}{1} {white}credits for death!"
+	}
+}
