@@ -67,6 +67,9 @@ jobs:
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v5
+        with:
+          name: package
+          path: artifacts
 
       - name: Versioning
         run: |
@@ -79,8 +82,8 @@ jobs:
       - name: Package
         run: |
           ls -Rall
-          if [ -d "./package/" ]; then
-            cd ./package/
+          if [ -d "./artifacts/" ]; then
+            cd ./artifacts/
             tar -czf ../${{ github.event.repository.name }}-${{ env.RELEASE_VERSION }}.tar.gz -T <(\ls -1)
             cd -
           fi
