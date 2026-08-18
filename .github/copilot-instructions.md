@@ -9,8 +9,7 @@ This is a SourcePawn plugin for SourceMod that integrates with the Shop system t
 **Key Files:**
 - `addons/sourcemod/scripting/Shop_CreditsDistributor.sp` - Main plugin source code
 - `addons/sourcemod/translations/shop_creditsdistributor.phrases.txt` - Translation strings
-- `sourceknight.yaml` - Build configuration for SourceKnight build system
-- `.github/workflows/ci.yml` - Automated CI/CD pipeline
+- `.github/workflows/ci.yml` - Automated CI/CD pipeline (GitHub Actions, spcomp via rumblefrog/setup-sp)
 
 **Plugin Features:**
 - **Time-based Credits**: Give credits to players at configurable intervals
@@ -23,8 +22,8 @@ This is a SourcePawn plugin for SourceMod that integrates with the Shop system t
 
 ### Language & Platform
 - **Language**: SourcePawn (SourceMod scripting language)
-- **Platform**: SourceMod 1.11+ for Source engine games
-- **Build Tool**: SourceKnight 0.2 (Python-based SourceMod build system)
+- **Platform**: SourceMod 1.12+ for Source engine games
+- **Build Tool**: GitHub Actions with `rumblefrog/setup-sp` (spcomp)
 - **Target Games**: Counter-Strike games (uses cstrike extension)
 
 ### Dependencies
@@ -35,41 +34,27 @@ This is a SourcePawn plugin for SourceMod that integrates with the Shop system t
 
 ## Build & Development Workflow
 
-### Build System (SourceKnight)
-The repository uses SourceKnight, a Python-based build system for SourceMod plugins:
-
-```bash
-# Install SourceKnight (if not in CI environment)
-pip install sourceknight
-
-# Build the plugin
-sourceknight build
-
-# Built plugins will be in .sourceknight/package/
-```
-
-**Note**: In CI/CD environments, SourceKnight is installed and run automatically via GitHub Actions.
+### Build System (GitHub Actions)
+The repository builds via native GitHub Actions (`.github/workflows/ci.yml`):
+1. `rumblefrog/setup-sp` installs the SourcePawn compiler (SourceMod 1.12.x).
+2. Dependencies (MultiColors, Shop-Core includes) are cloned into `addons/sourcemod/scripting/include`.
+3. `spcomp` compiles `addons/sourcemod/scripting/Shop_CreditsDistributor.sp` into `addons/sourcemod/plugins/`.
+4. The built `.smx` is packaged and uploaded as a build artifact; pushes to master/main tag and publish a `latest` release.
 
 ### Local Development Setup
-1. Clone repository
-2. Install SourceKnight: `pip install sourceknight`
-3. Run `sourceknight build` to compile
-4. Built plugin (.smx) will be in `.sourceknight/package/`
-5. Copy to local SourceMod server for testing
+1. Clone repository.
+2. Install a SourcePawn compiler (`spcomp`) matching SourceMod 1.12.x, or use `rumblefrog/setup-sp` locally.
+3. Fetch the MultiColors and Shop-Core include files into `addons/sourcemod/scripting/include`.
+4. Compile with `spcomp -i include -o ../plugins/Shop_CreditsDistributor.smx Shop_CreditsDistributor.sp` from `addons/sourcemod/scripting`.
+5. Copy the resulting `.smx` to a local SourceMod server for testing.
 
 ### CI/CD Pipeline
 - **Triggers**: Push to main/master branches, tags, and pull requests
 - **Process**: 
-  1. Build plugin using SourceKnight
+  1. Build plugin using GitHub Actions + spcomp
   2. Package with translations
-  3. Create GitHub releases for tags
+  3. Create GitHub releases for tags (and `latest` on master/main)
   4. Upload artifacts for testing
-
-### Local Development
-1. Clone repository
-2. Ensure SourceKnight is installed
-3. Run `sourceknight build` to compile
-4. Test on local SourceMod server
 
 ## Code Style & Standards
 
@@ -237,7 +222,7 @@ public void OnConVarChanged(Handle convar, const char[] oldValue, const char[] n
    - Kill/death scenarios
 
 ### Validation Checklist
-- [ ] Plugin compiles without warnings in SourceKnight
+- [ ] Plugin compiles without warnings in the GitHub Actions build
 - [ ] ConVars are created and functional (`sm cvars shop_creditsdistributor`)
 - [ ] Logic errors fixed (team validation, boolean operators)
 - [ ] Timers start/stop correctly on team changes
@@ -273,7 +258,7 @@ if (!IsValidClient(client))
 ### Development Issues & Solutions
 
 **Issue**: "Plugin failed to compile"
-- Check include file paths in sourceknight.yaml
+- Check include file paths in `.github/workflows/ci.yml`
 - Verify SourceMod version compatibility
 - Check for syntax errors (missing semicolons, brackets)
 
@@ -316,9 +301,9 @@ if (!IsValidClient(client))
 
 ## Dependencies Management
 
-The `sourceknight.yaml` file manages all dependencies:
-- SourceMod core files
-- MultiColors include files  
+The `Install dependencies` step in `.github/workflows/ci.yml` manages all dependencies:
+- SourceMod core files (via `rumblefrog/setup-sp`)
+- MultiColors include files
 - Shop-Core include files
 
-When adding new dependencies, update the yaml file with appropriate source and destination paths.
+When adding new dependencies, add a corresponding `git clone` + `cp` step in the workflow's `Install dependencies` step.
