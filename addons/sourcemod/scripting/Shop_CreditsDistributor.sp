@@ -6,22 +6,22 @@
 #include <shop>
 #include <multicolors>
 
-Handle g_Cvar_Interval;
-Handle g_Cvar_CreditsPerTick;
+ConVar g_Cvar_Interval;
+ConVar g_Cvar_CreditsPerTick;
 Handle h_timer[MAXPLAYERS+1];
 
-Handle g_Cvar_CreditsForRoundWin;
-Handle g_Cvar_WinnersCredits;
-Handle g_Cvar_SoloWinnerCredits;
-Handle g_Cvar_KillCredits;
-Handle g_Cvar_DeathCredits;
+ConVar g_Cvar_CreditsForRoundWin;
+ConVar g_Cvar_WinnersCredits;
+ConVar g_Cvar_SoloWinnerCredits;
+ConVar g_Cvar_KillCredits;
+ConVar g_Cvar_DeathCredits;
 
 public Plugin myinfo =
 {
     name        = "[Shop] Credits Distributor",
     author      = "inGame",
     description = "Credits Distributor component",
-    version     = "0.1",
+    version     = "0.2",
     url         = "www.nide.gg"
 };
 
@@ -36,7 +36,7 @@ public void OnPluginStart()
 	g_Cvar_KillCredits = CreateConVar("sm_shop_creditsdistributor_kill_credits", "5", "How many credits player will earn for kill", 0, true, 0.0, false);
 	g_Cvar_DeathCredits = CreateConVar("sm_shop_creditsdistributor_death_credits", "2", "How many credits player will lose for death", 0, true, 0.0, false);
 
-	HookConVarChange(g_Cvar_Interval, OnIntervalChange);
+	g_Cvar_Interval.AddChangeHook(OnIntervalChange);
 	
 	AutoExecConfig(true, "shop_creditsdistributor", "shop");
 	
@@ -63,7 +63,7 @@ public void OnPluginStart()
 	LoadTranslations("shop_creditsdistributor.phrases");
 }
 
-public void OnIntervalChange(Handle convar, const char[] oldValue, const char[] newValue)
+public void OnIntervalChange(ConVar convar, const char[] oldValue, const char[] newValue)
 {
 	for (int i = 1; i <= MaxClients; i++)
 	{
@@ -76,10 +76,9 @@ public void OnIntervalChange(Handle convar, const char[] oldValue, const char[] 
 
 public void OnClientDisconnect_Post(int client)
 {
-	if (h_timer[client] != INVALID_HANDLE)
+	if (h_timer[client] != null)
 	{
-		KillTimer(h_timer[client]);
-		h_timer[client] = INVALID_HANDLE;
+		delete h_timer[client];
 	}
 }
 
@@ -87,7 +86,7 @@ public void Create(int client)
 {
 	OnClientDisconnect_Post(client);
 	
-	float interval = GetConVarFloat(g_Cvar_Interval);
+	float interval = g_Cvar_Interval.FloatValue;
 	if (interval < 1.0)
 	{
 		return;
@@ -98,7 +97,7 @@ public void Create(int client)
 
 public Action GivePoints(Handle timer, int client)
 {
-	int amount = GetConVarInt(g_Cvar_CreditsPerTick);
+	int amount = g_Cvar_CreditsPerTick.IntValue;
 	int gain = Shop_GiveClientCredits(client, amount, CREDITS_BY_NATIVE);
 	if (gain != -1)
 	{
@@ -108,11 +107,11 @@ public Action GivePoints(Handle timer, int client)
 
 public void Event_OnPlayerTeam(Event event, const char[] name, bool dontBroadcast)
 {
-	int client = GetClientOfUserId(GetEventInt(event, "userid"));
+	int client = GetClientOfUserId(event.GetInt("userid"));
 	if (!client || IsFakeClient(client)) 
 		return;
 	
-	switch (GetEventInt(event, "team"))
+	switch (event.GetInt("team"))
 	{
 		case CS_TEAM_CT, CS_TEAM_T :
 		{
@@ -127,7 +126,7 @@ public void Event_OnPlayerTeam(Event event, const char[] name, bool dontBroadcas
 
 public void Event_OnRoundEnd(Event event, const char[] name, bool dontBroadcast)
 {
-	bool bCreditsForRoundWin = GetConVarBool(g_Cvar_CreditsForRoundWin);
+	bool bCreditsForRoundWin = g_Cvar_CreditsForRoundWin.BoolValue;
 	
 	int iZombies = 0, iHumans = 0;
 	int SoloWinner;
@@ -155,7 +154,7 @@ public void Event_OnRoundEnd(Event event, const char[] name, bool dontBroadcast)
 	{
 		if(iHumans == 1) // Solo winner
 		{
-			int iSoloWinnerCreditsAmount = GetConVarInt(g_Cvar_SoloWinnerCredits);
+			int iSoloWinnerCreditsAmount = g_Cvar_SoloWinnerCredits.IntValue;
 			
 			Shop_GiveClientCredits(SoloWinner, iSoloWinnerCreditsAmount, CREDITS_BY_NATIVE);
 
@@ -165,7 +164,7 @@ public void Event_OnRoundEnd(Event event, const char[] name, bool dontBroadcast)
 		}
 		else if(iHumans > 1)
 		{
-			int iWinnersCreditsAmount = GetConVarInt(g_Cvar_WinnersCredits);
+			int iWinnersCreditsAmount = g_Cvar_WinnersCredits.IntValue;
 
 			for(int i = 1; i <= MaxClients; i++)
 			{
@@ -185,19 +184,19 @@ public void Event_OnRoundEnd(Event event, const char[] name, bool dontBroadcast)
 
 public void Event_OnPlayerDeath(Event event, const char[] name, bool dontBroadcast)
 {
-	int client_died = GetClientOfUserId(GetEventInt(event, "userid"));
+	int client_died = GetClientOfUserId(event.GetInt("userid"));
 	if(!client_died)
 		return;
 
-	int client_attacker = GetClientOfUserId(GetEventInt(event, "attacker"));
+	int client_attacker = GetClientOfUserId(event.GetInt("attacker"));
 	if(!client_attacker)
 		return;
 
 	if(client_died == client_attacker)
 		return;
 	
-	int iKillCredits = GetConVarInt(g_Cvar_KillCredits);
-	int iDeathCredits = GetConVarInt(g_Cvar_DeathCredits);
+	int iKillCredits = g_Cvar_KillCredits.IntValue;
+	int iDeathCredits = g_Cvar_DeathCredits.IntValue;
 
 	if(IsClientInGame(client_attacker) && !IsFakeClient(client_attacker) && IsPlayerAlive(client_attacker) && IsClientInGame(client_died) && !IsFakeClient(client_died))
 	{
