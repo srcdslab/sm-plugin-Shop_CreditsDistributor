@@ -21,7 +21,7 @@ public Plugin myinfo =
     name        = "[Shop] Credits Distributor",
     author      = "inGame",
     description = "Credits Distributor component",
-    version     = "0.2",
+    version     = "0.2.1",
     url         = "www.nide.gg"
 };
 

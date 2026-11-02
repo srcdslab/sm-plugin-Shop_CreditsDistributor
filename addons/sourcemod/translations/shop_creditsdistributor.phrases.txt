@@ -4,29 +4,59 @@
 	{
         "#format"       "{1:i}"
 		"en"			"{fullred}[Shop] {white}You have gained {green}{1}{white} credits for playing on the server."
+		"fr"			"{fullred}[Shop] {white}Vous avez gagné {green}{1}{white} crédits pour avoir joué sur le serveur."
+		"ru"			"{fullred}[Shop] {white}Вы получили {green}{1}{white} кредитов за игру на сервере."
+		"es"			"{fullred}[Shop] {white}Has ganado {green}{1}{white} créditos por jugar en el servidor."
+		"de"			"{fullred}[Shop] {white}Du hast {green}{1}{white} Credits für das Spielen auf dem Server erhalten."
+		"pt"			"{fullred}[Shop] {white}Você ganhou {green}{1}{white} créditos por jogar no servidor."
+		"chi"			"{fullred}[Shop] {white}你因在服务器游玩获得了{green}{1}{white}积分。"
 	}
 	
 	"Humans win"
 	{
         "#format"       "{1:i}"
 		"en"			"{fullred}[Shop] {blue}Humans {white}received {green}{1} {white}credits for all zombies eliminated!"
+		"fr"			"{fullred}[Shop] {blue}Les humains {white}ont reçu {green}{1} {white}crédits pour avoir éliminé tous les zombies !"
+		"ru"			"{fullred}[Shop] {blue}Люди {white}получили {green}{1} {white}кредитов за уничтожение всех зомби!"
+		"es"			"{fullred}[Shop] {blue}¡Los humanos {white}recibieron {green}{1} {white}créditos por eliminar a todos los zombis!"
+		"de"			"{fullred}[Shop] {blue}Menschen {white}erhielten {green}{1} {white}Credits für das Eliminieren aller Zombies!"
+		"pt"			"{fullred}[Shop] {blue}Os humanos {white}receberam {green}{1} {white}créditos por eliminar todos os zumbis!"
+		"chi"			"{fullred}[Shop] {blue}人类{white}因消灭所有僵尸获得了{green}{1} {white}积分！"
 	}
 	
 	"Solo win"
 	{
         "#format"       "{1:s},{2:i}"
-		"en"			"{fullred}[Shop] {blue}{1} {white}received {green}{2} {white}credits for solo win!"
+		"en"			"{fullred}[Shop] {blue}{1} {white}received {green}{2} {white}credits for a solo win!"
+		"fr"			"{fullred}[Shop] {blue}{1} {white}a reçu {green}{2} {white}crédits pour avoir gagné en solo !"
+		"ru"			"{fullred}[Shop] {blue}{1} {white}получил {green}{2} {white}кредитов за победу в одиночку!"
+		"es"			"{fullred}[Shop] {blue}¡{1} {white}recibió {green}{2} {white}créditos por ganar en solitario!"
+		"de"			"{fullred}[Shop] {blue}{1} {white}erhielt {green}{2} {white}Credits für den Solo-Sieg!"
+		"pt"			"{fullred}[Shop] {blue}{1} {white}recebeu {green}{2} {white}créditos por vencer sozinho!"
+		"chi"			"{fullred}[Shop] {blue}{1} {white}因单人获胜获得了{green}{2} {white}积分！"
 	}
 	
 	"Kill"
 	{
         "#format"       "{1:i}"
-		"en"			"{fullred}[Shop] {white}You received {green}{1} {white}credits for kill!"
+		"en"			"{fullred}[Shop] {white}You received {green}{1} {white}credits for a kill!"
+		"fr"			"{fullred}[Shop] {white}Vous avez reçu {green}{1} {white}crédits pour un kill !"
+		"ru"			"{fullred}[Shop] {white}Вы получили {green}{1} {white}кредитов за убийство!"
+		"es"			"{fullred}[Shop] {white}¡Recibiste {green}{1} {white}créditos por una baja!"
+		"de"			"{fullred}[Shop] {white}Du hast {green}{1} {white}Credits für einen Kill erhalten!"
+		"pt"			"{fullred}[Shop] {white}Você recebeu {green}{1} {white}créditos por um abate!"
+		"chi"			"{fullred}[Shop] {white}你因击杀获得了{green}{1} {white}积分！"
 	}
 	
 	"Death"
 	{
         "#format"       "{1:i}"
-		"en"			"{fullred}[Shop] {white}You lost {green}{1} {white}credits for death!"
+		"en"			"{fullred}[Shop] {white}You lost {green}{1} {white}credits for dying!"
+		"fr"			"{fullred}[Shop] {white}Vous avez perdu {green}{1} {white}crédits pour votre mort !"
+		"ru"			"{fullred}[Shop] {white}Вы потеряли {green}{1} {white}кредитов за смерть!"
+		"es"			"{fullred}[Shop] {white}¡Perdiste {green}{1} {white}créditos por morir!"
+		"de"			"{fullred}[Shop] {white}Du hast {green}{1} {white}Credits durch deinen Tod verloren!"
+		"pt"			"{fullred}[Shop] {white}Você perdeu {green}{1} {white}créditos por morrer!"
+		"chi"			"{fullred}[Shop] {white}你因死亡失去了{green}{1} {white}积分！"
 	}
 }
