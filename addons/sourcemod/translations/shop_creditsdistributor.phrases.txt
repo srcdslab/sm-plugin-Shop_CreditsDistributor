@@ -10,6 +10,12 @@
 		"de"			"{fullred}[Shop] {white}Du hast {green}{1}{white} Credits für das Spielen auf dem Server erhalten."
 		"pt"			"{fullred}[Shop] {white}Você ganhou {green}{1}{white} créditos por jogar no servidor."
 		"chi"			"{fullred}[Shop] {white}你因在服务器游玩获得了{green}{1}{white}积分。"
+		"pl"			"{fullred}[Shop] {white}Otrzymałeś {green}{1}{white} kredytów za grę na serwerze."
+		"tr"			"{fullred}[Shop] {white}Sunucuda oynadığın için {green}{1}{white} kredi kazandın."
+		"it"			"{fullred}[Shop] {white}Hai guadagnato {green}{1}{white} crediti per aver giocato sul server."
+		"ua"			"{fullred}[Shop] {white}Ви отримали {green}{1}{white} кредитів за гру на сервері."
+		"zho"			"{fullred}[Shop] {white}你因在伺服器上遊玩獲得了{green}{1}{white}點數。"
+		"cze"			"{fullred}[Shop] {white}Získal jsi {green}{1}{white} kreditů za hraní na serveru."
 	}
 	
 	"Humans win"
@@ -22,6 +28,12 @@
 		"de"			"{fullred}[Shop] {blue}Menschen {white}erhielten {green}{1} {white}Credits für das Eliminieren aller Zombies!"
 		"pt"			"{fullred}[Shop] {blue}Os humanos {white}receberam {green}{1} {white}créditos por eliminar todos os zumbis!"
 		"chi"			"{fullred}[Shop] {blue}人类{white}因消灭所有僵尸获得了{green}{1} {white}积分！"
+		"pl"			"{fullred}[Shop] {blue}Ludzie {white}otrzymali {green}{1} {white}kredytów za wyeliminowanie wszystkich zombie!"
+		"tr"			"{fullred}[Shop] {blue}İnsanlar {white}tüm zombileri etkisiz hale getirdiği için {green}{1} {white}kredi kazandı!"
+		"it"			"{fullred}[Shop] {blue}Gli umani {white}hanno ricevuto {green}{1} {white}crediti per aver eliminato tutti gli zombie!"
+		"ua"			"{fullred}[Shop] {blue}Люди {white}отримали {green}{1} {white}кредитів за знищення всіх зомбі!"
+		"zho"			"{fullred}[Shop] {blue}人類{white}因消滅所有殭屍獲得了{green}{1} {white}點數！"
+		"cze"			"{fullred}[Shop] {blue}Lidé {white}získali {green}{1} {white}kreditů za eliminaci všech zombie!"
 	}
 	
 	"Solo win"
@@ -34,6 +46,12 @@
 		"de"			"{fullred}[Shop] {blue}{1} {white}erhielt {green}{2} {white}Credits für den Solo-Sieg!"
 		"pt"			"{fullred}[Shop] {blue}{1} {white}recebeu {green}{2} {white}créditos por vencer sozinho!"
 		"chi"			"{fullred}[Shop] {blue}{1} {white}因单人获胜获得了{green}{2} {white}积分！"
+		"pl"			"{fullred}[Shop] {blue}{1} {white}otrzymał {green}{2} {white}kredytów za samotne zwycięstwo!"
+		"tr"			"{fullred}[Shop] {blue}{1} {white}tek başına kazandığı için {green}{2} {white}kredi aldı!"
+		"it"			"{fullred}[Shop] {blue}{1} {white}ha ricevuto {green}{2} {white}crediti per una vittoria in solitaria!"
+		"ua"			"{fullred}[Shop] {blue}{1} {white}отримав {green}{2} {white}кредитів за самостійну перемогу!"
+		"zho"			"{fullred}[Shop] {blue}{1} {white}因獨自獲勝獲得了{green}{2} {white}點數！"
+		"cze"			"{fullred}[Shop] {blue}{1} {white}získal {green}{2} {white}kreditů za sólové vítězství!"
 	}
 	
 	"Kill"
@@ -46,6 +64,12 @@
 		"de"			"{fullred}[Shop] {white}Du hast {green}{1} {white}Credits für einen Kill erhalten!"
 		"pt"			"{fullred}[Shop] {white}Você recebeu {green}{1} {white}créditos por um abate!"
 		"chi"			"{fullred}[Shop] {white}你因击杀获得了{green}{1} {white}积分！"
+		"pl"			"{fullred}[Shop] {white}Otrzymałeś {green}{1} {white}kredytów za zabójstwo!"
+		"tr"			"{fullred}[Shop] {white}Bir öldürme için {green}{1} {white}kredi aldın!"
+		"it"			"{fullred}[Shop] {white}Hai ricevuto {green}{1} {white}crediti per un'uccisione!"
+		"ua"			"{fullred}[Shop] {white}Ви отримали {green}{1} {white}кредитів за вбивство!"
+		"zho"			"{fullred}[Shop] {white}你因擊殺獲得了{green}{1} {white}點數！"
+		"cze"			"{fullred}[Shop] {white}Získal jsi {green}{1} {white}kreditů za zabití!"
 	}
 	
 	"Death"
@@ -58,5 +82,11 @@
 		"de"			"{fullred}[Shop] {white}Du hast {green}{1} {white}Credits durch deinen Tod verloren!"
 		"pt"			"{fullred}[Shop] {white}Você perdeu {green}{1} {white}créditos por morrer!"
 		"chi"			"{fullred}[Shop] {white}你因死亡失去了{green}{1} {white}积分！"
+		"pl"			"{fullred}[Shop] {white}Straciłeś {green}{1} {white}kredytów za śmierć!"
+		"tr"			"{fullred}[Shop] {white}Öldüğün için {green}{1} {white}kredi kaybettin!"
+		"it"			"{fullred}[Shop] {white}Hai perso {green}{1} {white}crediti per essere morto!"
+		"ua"			"{fullred}[Shop] {white}Ви втратили {green}{1} {white}кредитів через смерть!"
+		"zho"			"{fullred}[Shop] {white}你因死亡損失了{green}{1} {white}點數！"
+		"cze"			"{fullred}[Shop] {white}Ztratil jsi {green}{1} {white}kreditů za smrt!"
 	}
 }
